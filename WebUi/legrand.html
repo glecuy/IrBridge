@@ -1,0 +1,88 @@
+<!Doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="legrand.css">
+</head>
+
+<body>
+
+<div class="divFrame">
+
+<div class="control-container">
+  <div><button onclick="location.href='Bridge'" class="SysButton">
+	  <img src="images/samsung.png" alt="Samsung" height="80">
+  </button></div>
+  <div><button onclick="location.href='legrand.html'" class="SysButton">
+	  <img src="images/legrand.png" alt="Legrand" height="80">
+  </button></div>
+</div>
+
+<div class="control-container">
+  <div class="blackLine"></div>
+  <div class="label">Volet Chambre</div>
+  <div><button onclick="keyClick('000')" class="button">On</button></div>
+  <div><button onclick="keyClick('001')" class="button">Off</button></div>  
+  
+  <div class="blackLine"></div>
+  <div class="label">Volet Sejour 1</div>
+  <div><button onclick="keyClick('002')" class="button">On</button></div>
+  <div><button onclick="keyClick('003')" class="button">Off</button></div>
+  
+  <div class="blackLine"></div>
+  <div class="label">Volet Sejour 2</div>
+  <div><button onclick="keyClick('004')" class="button">On</button></div>
+  <div><button onclick="keyClick('005')" class="button">Off</button></div>
+  
+  <div class="blackLine"></div>
+  <div class="label">Volet Sejour 3</div>
+  <div><button onclick="keyClick('006')" class="button">On</button></div>
+  <div><button onclick="keyClick('007')" class="button">Off</button></div>
+  
+  <div class="blackLine"></div>
+  <div class="label">3 Volets Sejour</div>
+  <div><button onclick="keyClick('014')" class="button">On</button></div>
+  <div><button onclick="keyClick('015')" class="button">Off</button></div>
+
+  <div class="blackLine"></div>
+  <div class="label">Prise 1</div>
+  <div><button onclick="keyClick('000')" class="button">On</button></div>
+  <div><button onclick="keyClick('001')" class="button">Off</button></div>
+  
+  <div class="blackLine"></div>
+  <div class="label">Prise 2</div>
+  <div><button onclick="keyClick('002')" class="button">On</button></div>
+  <div><button onclick="keyClick('003')" class="button">Off</button></div>
+  
+  <div class="blackLine"></div>
+  <div class="label">Prise 3</div>
+  <div><button onclick="keyClick('004')" class="button">On</button></div>
+  <div><button onclick="keyClick('005')" class="button">Off</button></div>
+  
+  <div class="blackLine"></div>
+  <div class="label">Porte Garage 1</div>
+  <div><button onclick="keyClick('016')" class="button">On/Off</button></div>
+  
+  <div class="blackLine"></div>
+  <div class="label">Porte Garage 2</div>
+  <div><button onclick="keyClick('022')" class="button">On/Off</button></div>
+   
+  <div class="blackLine"></div>
+  <div class="label">Porte Service</div>
+  <div><button onclick="keyClick('018')" class="button">On/Off</button></div>
+   
+  <div class="blackLine"></div>
+  <div class="label">Portail</div>
+  <div><button onclick="keyClick('020')" class="button">On/Off</button></div>
+  
+  <div class="label" id="demo" style="background-color:black;" ></div>
+</div>
+
+
+</div>
+
+
+<script src="keyClick.js"></script>
+
+</body>
+</html>

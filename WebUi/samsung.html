@@ -1,0 +1,65 @@
+<!Doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="samsung.css">
+</head>
+
+<body>
+
+<div class="divFrame">
+
+<div class="control-container">
+  <div><button onclick="location.href='Bridge'" class="SysButton">
+	  <img src="images/samsung.png" alt="Samsung" height="80">
+  </button></div>
+  <div><button onclick="location.href='legrand.html'" class="SysButton">
+	  <img src="images/legrand.png" alt="Legrand" height="80">
+  </button></div>
+</div>
+
+<div class="control-container">
+  <div><button onclick="keyClick('910')" class="button">V+</button></div>
+  <div><button onclick="keyClick('911')" class="button">P+</button></div>
+  <div><button onclick="keyClick('912')" class="button">V-</button></div>
+  <div><button onclick="keyClick('913')" class="button">P-</button></div>
+</div>
+
+<div class="one-container">
+  <div><button onclick="keyClick('916')" class="button">SOURCE</button></div>
+</div>
+
+<div class="num-pad-container">
+  <div><button onclick="keyClick('917')" class="arrow-up">H</button></div>
+  <div><button onclick="keyClick('919')" class="button">Entree</button></div>
+  <div><button onclick="keyClick('918')" class="arrow-down">B</button></div>
+</div>
+
+<div class="num-pad-container">
+  <div><button onclick="keyClick('901')" class="button">1</button></div>
+  <div><button onclick="keyClick('902')" class="button">2</button></div>
+  <div><button onclick="keyClick('903')" class="button">3</button></div>
+  <div><button onclick="keyClick('904')" class="button">4</button></div>
+  <div><button onclick="keyClick('905')" class="button">5</button></div>
+  <div><button onclick="keyClick('906')" class="button">6</button></div>
+  <div><button onclick="keyClick('907')" class="button">7</button></div>
+  <div><button onclick="keyClick('908')" class="button">8</button></div>
+  <div><button onclick="keyClick('909')" class="button">9</button></div>
+  <div><button onclick="keyClick('914')" class="button">Mute</button></div>
+  <div><button onclick="keyClick('900')" class="button">0</button></div>
+  <div><button style="background-color:grey" onclick="keyClick('915')" class="button">
+	  <img src="images/power.png" alt="power" height="80" width="80">
+  </button></div>
+  <div id="demo" ></div>
+</div>
+
+</div>
+
+<div>
+<p id="demo"></p>
+</div>
+
+<script src="keyClick.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+.divFrame {
+  max-width: 400px;
+}
+
+.SysButton {
+  width: 100%;
+  height: 90px;
+  background-color: grey;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  
+  border-bottom: 100px solid green;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  
+  border-top: 100px solid green;
+}
+
+.one-container {
+  display: grid;
+  grid-template-columns: 100%;
+  padding: 10px;
+  grid-gap: 10px;
+}
+
+.control-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 10px;
+  grid-gap: 10px;
+}
+
+.num-pad-container {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  padding: 10px;
+  grid-gap: 10px;
+}
+
+.button {
+  width: 100%;
+  height: 100px;
+  background-color: green;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translate(2px, 2px);
+}
