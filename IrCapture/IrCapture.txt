@@ -1,0 +1,1 @@
+arecord -v -r 48000 -t raw -f U8 | ./irwave

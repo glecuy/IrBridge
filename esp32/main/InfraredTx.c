@@ -60,7 +60,7 @@ void InfraredTxInit( void ){
     int cmd=0;
     while( 1 ){
 
-        InfraredLegrandTxExecute( 0, 0 );
+        InfraredLegrandTxExecute( 0 );
         cmd++;
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
@@ -74,20 +74,19 @@ void InfraredNecCodeSend( uint32_t code ){
 
 
 void InfraredLegrandCodeSend( uint32_t code ){
-    short cursor;
-    short b;
+    short index;
 
      switch( code ){
-        case LGD_MESG_KEY_1P_1: cursor=0; b=0; break;
-        case LGD_MESG_KEY_1P_2: cursor=0; b=1; break;
-        case LGD_MESG_KEY_1P_3: cursor=0; b=2; break;
-        case LGD_MESG_KEY_1P_4: cursor=0; b=3; break;
+        case LGD_MESG_KEY_1P_1: index=0; break;
+        case LGD_MESG_KEY_1P_2: index=1; break;
+        case LGD_MESG_KEY_1P_3: index=2; break;
+        case LGD_MESG_KEY_1P_4: index=3; break;
 
 
-        default: cursor=0; b=0; break;
+        default: index=0; break;
      }
 
-     InfraredLegrandTxExecute( cursor, b );
+     InfraredLegrandTxExecute( index );
 }
 
 /*
