@@ -14,6 +14,8 @@ Http controlled infrared transmitter
   
   Have ESP toolchain installed.
   
+  See [official Espressif documentation]
+  (https://docs.espressif.com/projects/esp-idf/en/stable/get-started)
   
 ## Compilation (Linux host)
   ### Build pages2c host tool:

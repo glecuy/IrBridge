@@ -133,6 +133,7 @@ int main( int argc, char * argv[] )
 		sampleCounter++;
 		sample = byteToSample(byte);
 		int level = (int)(sample>25);
+		//if ( level )
 		//printf( "byte = %02X -> %+d -> %d\n", (unsigned)byte, sample, level );
 
 		if ( (started==0) && (level > 0) ){

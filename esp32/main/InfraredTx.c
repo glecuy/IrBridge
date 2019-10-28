@@ -25,6 +25,7 @@
 #include "IrBridge.h"
 
 #define RMT_TX_CARRIER_EN    1   /*!< Enable carrier for IR transmitter test with IR led */
+#define RMT_CARRIER_DUTY    40   /* Per cent */
 
 
 
@@ -39,7 +40,7 @@ static void rmt_tx_init(unsigned freq)
     rmt_tx.mem_block_num = 1;
     rmt_tx.clk_div = RMT_CLK_DIV;
     rmt_tx.tx_config.loop_en = false;
-    rmt_tx.tx_config.carrier_duty_percent = 40;
+    rmt_tx.tx_config.carrier_duty_percent = RMT_CARRIER_DUTY;
     rmt_tx.tx_config.carrier_freq_hz = freq;
     rmt_tx.tx_config.carrier_level = 1;
     rmt_tx.tx_config.carrier_en = RMT_TX_CARRIER_EN;
@@ -48,6 +49,26 @@ static void rmt_tx_init(unsigned freq)
     rmt_tx.rmt_mode = 0;
     rmt_config(&rmt_tx);
     rmt_driver_install(rmt_tx.channel, 0, 0);
+}
+
+static void rmt_tx_frequency(unsigned freq)
+{	
+	static uint16_t rmtTxDriverInitFreq;  // Manage 36 vs 38 Khz
+	if ( rmtTxDriverInitFreq == freq )
+		return;
+	printf( "Setting frequency to %u\n", freq);
+	
+	uint32_t duty_div, duty_h, duty_l;
+	duty_div = APB_CLK_FREQ / freq;
+	duty_h = duty_div * RMT_CARRIER_DUTY / 100;
+	duty_l = duty_div - duty_h;
+	rmt_set_tx_carrier(	RMT_TX_CHANNEL, 
+						RMT_TX_CARRIER_EN,
+						duty_h,	// high_level
+						duty_l,	// low_level
+						1       // carrier_level
+						);
+	rmtTxDriverInitFreq = freq;
 }
 
 
@@ -76,11 +97,13 @@ void InfraredNecCodeSend( uint32_t code ){
 void InfraredLegrandCodeSend( uint32_t code ){
     short index;
 
-     switch( code ){
-        case LGD_MESG_KEY_1P_1: index=0; break;
-        case LGD_MESG_KEY_1P_2: index=1; break;
-        case LGD_MESG_KEY_1P_3: index=2; break;
-        case LGD_MESG_KEY_1P_4: index=3; break;
+	rmt_tx_frequency(36000);
+
+	switch( code ){
+		case LGD_MESG_KEY_1P_1: index=0; break;
+		case LGD_MESG_KEY_1P_2: index=1; break;
+		case LGD_MESG_KEY_1P_3: index=2; break;
+		case LGD_MESG_KEY_1P_4: index=3; break;
 
 
         default: index=0; break;
@@ -94,6 +117,10 @@ void InfraredLegrandCodeSend( uint32_t code ){
 
 *****/
 void InfraredSamsungCodeSend( uint32_t code ){
+	
+
+	rmt_tx_frequency(38000);				
+	
     // Convert code to Samsung
      uint16_t samsungcode;
      switch( code ){
