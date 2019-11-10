@@ -100,11 +100,26 @@ void InfraredLegrandCodeSend( uint32_t code ){
 	rmt_tx_frequency(36000);
 
 	switch( code ){
-		case LGD_MESG_KEY_1P_1: index=0; break;
-		case LGD_MESG_KEY_1P_2: index=1; break;
-		case LGD_MESG_KEY_1P_3: index=2; break;
-		case LGD_MESG_KEY_1P_4: index=3; break;
+		//case LGD_MESG_KEY_1P_1: index=0; break;
+		//case LGD_MESG_KEY_1P_2: index=1; break;
+		//case LGD_MESG_KEY_1P_3: index=2; break;
+		//case LGD_MESG_KEY_1P_4: index=3; break;
+		
+		// Lampe Salon
+		case 2: index=2; break;
+		case 0x12: index=2+6; break;
 
+		// Volet Chambre 
+		case 3: index=4; break;
+		case 0x13: index=4+6; break;
+
+		// Volets Salon 
+		case 4: index=4; break;
+		case 0x14: index=4+6; break;
+		case 5: index=5; break;
+		case 0x15: index=5+6; break;
+		case 6: index=6; break;
+		case 0x16: index=6+6; break;
 
         default: index=0; break;
      }
