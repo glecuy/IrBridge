@@ -38,13 +38,17 @@ typedef struct rawTxItemSeq_s{
 }rawTxItemSeq_t;
 
 /*
- * 
+ * Mapping:
+ *   6 buttons by column: xx0..xx5
+ *   2 columns  (left + right) for ON and OFF: x0x -> x1x
+ *   1 Cursor (high an d low positions) 0xx -> 1xx
  *
  * The table structure represents the RMT item structure:
  * {duration, level, duration, level}
  *
  */
-rmt_item32_t txIitems01[] = {
+// Cursor High
+const rmt_item32_t txIitems000[] = {
         {{{   710, 1,   320, 0 }}}, // 0
         {{{   355, 1,   313, 0 }}}, // 2
         {{{   358, 1,   313, 0 }}}, // 4
@@ -86,7 +90,7 @@ rmt_item32_t txIitems01[] = {
 		{{{ 0, 1, 0, 0 }}}
 	};
 
-rmt_item32_t txIitems02[] = {
+const rmt_item32_t txIitems001[] = {
         {{{   716, 1,   316, 0 }}}, // 0
         {{{   355, 1,   316, 0 }}}, // 2
         {{{   355, 1,   316, 0 }}}, // 4
@@ -128,7 +132,7 @@ rmt_item32_t txIitems02[] = {
 		{{{ 0, 1, 0, 0 }}}
 	};
 
-rmt_item32_t txIitems03[] = {
+const rmt_item32_t txIitems002[] = {
         {{{   713, 1,   313, 0 }}}, // 0
         {{{   358, 1,   316, 0 }}}, // 2
         {{{   358, 1,   313, 0 }}}, // 4
@@ -175,7 +179,7 @@ rmt_item32_t txIitems03[] = {
 
 
 
-rmt_item32_t txIitems04[] = {
+const rmt_item32_t txIitems003[] = {
         {{{   713, 1,   313, 0 }}}, // 0
         {{{   358, 1,   313, 0 }}}, // 2
         {{{   361, 1,   313, 0 }}}, // 4
@@ -218,7 +222,7 @@ rmt_item32_t txIitems04[] = {
 		{{{ 0, 1, 0, 0 }}}
 	};
 
-rmt_item32_t txIitems05[] = {
+const rmt_item32_t txIitems004[] = {
         {{{   694, 1,   336, 0 }}}, // 0
         {{{   336, 1,   339, 0 }}}, // 2
         {{{   336, 1,   336, 0 }}}, // 4
@@ -262,8 +266,8 @@ rmt_item32_t txIitems05[] = {
 		// RMT end marker
 		{{{ 0, 1, 0, 0 }}}
 	};
-	
-rmt_item32_t txIitems06[] = {	
+
+const rmt_item32_t txIitems005[] = {
         {{{   694, 1,   336, 0 }}}, // 0
         {{{   339, 1,   332, 0 }}}, // 2
         {{{   339, 1,   332, 0 }}}, // 4
@@ -307,7 +311,7 @@ rmt_item32_t txIitems06[] = {
 	};
 
 
-rmt_item32_t txIitems11[] = {
+const rmt_item32_t txIitems010[] = {
         {{{   716, 1,   313, 0 }}}, // 0
         {{{   358, 1,   313, 0 }}}, // 2
         {{{   355, 1,   320, 0 }}}, // 4
@@ -349,7 +353,7 @@ rmt_item32_t txIitems11[] = {
 	};
 
 
-rmt_item32_t txIitems12[] = {
+const rmt_item32_t txIitems011[] = {
         {{{   710, 1,   316, 0 }}}, // 0
         {{{   358, 1,   313, 0 }}}, // 2
         {{{   358, 1,   313, 0 }}}, // 4
@@ -393,7 +397,7 @@ rmt_item32_t txIitems12[] = {
 	};
 
 
-rmt_item32_t txIitems13[] = {
+const rmt_item32_t txIitems012[] = {
         {{{   720, 1,   313, 0 }}}, // 0
         {{{   358, 1,   313, 0 }}}, // 2
         {{{   355, 1,   320, 0 }}}, // 4
@@ -438,7 +442,7 @@ rmt_item32_t txIitems13[] = {
 	};
 
 
-rmt_item32_t txIitems14[] = {
+const rmt_item32_t txIitems013[] = {
         {{{   713, 1,   313, 0 }}}, // 0
         {{{   358, 1,   313, 0 }}}, // 2
         {{{   358, 1,   316, 0 }}}, // 4
@@ -480,7 +484,7 @@ rmt_item32_t txIitems14[] = {
 	};
 
 
-rmt_item32_t txIitems15[] = {
+const rmt_item32_t txIitems014[] = {
         {{{   713, 1,   316, 0 }}}, // 0
         {{{   339, 1,   332, 0 }}}, // 2
         {{{   358, 1,   313, 0 }}}, // 4
@@ -526,7 +530,7 @@ rmt_item32_t txIitems15[] = {
 	};
 
 
-rmt_item32_t txIitems16[] = {
+const rmt_item32_t txIitems015[] = {
         {{{   713, 1,   313, 0 }}}, // 0
         {{{   358, 1,   313, 0 }}}, // 2
         {{{   358, 1,   316, 0 }}}, // 4
@@ -567,16 +571,10 @@ rmt_item32_t txIitems16[] = {
 		// RMT end marker
 		{{{ 0, 1, 0, 0 }}}
 	};
-	
-	
 
-/*
-Curseur bas :
-Type [C-a] [C-h] to see available commands
-Terminal ready
-HelloAVR
 
-    {
+// Cursor Low
+const rmt_item32_t txIitems100[] = {
         {{{   713, 1,   316, 0 }}}, // 0
         {{{   358, 1,   313, 0 }}}, // 2
         {{{   358, 1,   313, 0 }}}, // 4
@@ -615,13 +613,12 @@ HelloAVR
         {{{  1366, 1,   652, 0 }}}, // 66
         {{{  1030, 1,   313, 0 }}}, // 68
         {{{   358, 1,   985, 0 }}}, // 70
-        {{{   358, 1, 32767, 0 }}}, // 72
-        {{{    66, 0,    66, 0 }}},
-        {{{    66, 0,    66, 0 }}},
-    {
-Nb pulse = 37
-Frame length = 176323
-    {
+        {{{   358, 1,  1000, 0 }}}, // 72
+		// RMT end marker
+		{{{ 0, 1, 0, 0 }}}
+	};
+
+const rmt_item32_t txIitems101[] = {
         {{{   716, 1,   313, 0 }}}, // 0
         {{{   358, 1,   313, 0 }}}, // 2
         {{{   358, 1,   313, 0 }}}, // 4
@@ -660,13 +657,12 @@ Frame length = 176323
         {{{   355, 1,   652, 0 }}}, // 66
         {{{   358, 1,   313, 0 }}}, // 68
         {{{   358, 1,   313, 0 }}}, // 70
-        {{{   358, 1, 32767, 0 }}}, // 72
-        {{{   150, 0,   150, 0 }}},
-        {{{   150, 0,   150, 0 }}},
-    {
-Nb pulse = 37
-Frame length = 175987
-    {
+        {{{   358, 1,  1000, 0 }}}, // 72
+		// RMT end marker
+		{{{ 0, 1, 0, 0 }}}
+	};
+
+const rmt_item32_t txIitems102[] = {
         {{{   713, 1,   313, 0 }}}, // 0
         {{{   358, 1,   320, 0 }}}, // 2
         {{{   352, 1,   320, 0 }}}, // 4
@@ -706,13 +702,12 @@ Frame length = 175987
         {{{   694, 1,   316, 0 }}}, // 68
         {{{  1366, 1,   649, 0 }}}, // 70
         {{{   358, 1,   316, 0 }}}, // 72
-        {{{  2374, 1, 32767, 0 }}}, // 74
-        {{{    68, 0,    68, 0 }}},
-        {{{    68, 0,    68, 0 }}},
-    {
-Nb pulse = 38
-Frame length = 174300
-    {
+        {{{  2374, 1,  1000, 0 }}}, // 74
+		// RMT end marker
+		{{{ 0, 1, 0, 0 }}}
+	};
+
+const rmt_item32_t txIitems103[] = {
         {{{   713, 1,   316, 0 }}}, // 0
         {{{   355, 1,   316, 0 }}}, // 2
         {{{   358, 1,   313, 0 }}}, // 4
@@ -752,13 +747,12 @@ Frame length = 174300
         {{{   358, 1,   316, 0 }}}, // 68
         {{{   355, 1,   988, 0 }}}, // 70
         {{{   358, 1,   313, 0 }}}, // 72
-        {{{   358, 1, 32767, 0 }}}, // 74
-        {{{    66, 0,    66, 0 }}},
-        {{{    66, 0,    66, 0 }}},
-    {
-Nb pulse = 38
-Frame length = 176323
-    {
+        {{{   358, 1,  1000, 0 }}}, // 74
+		// RMT end marker
+		{{{ 0, 1, 0, 0 }}}
+	};
+
+const rmt_item32_t txIitems104[] = {
         {{{   710, 1,   313, 0 }}}, // 0
         {{{   358, 1,   313, 0 }}}, // 2
         {{{   358, 1,   316, 0 }}}, // 4
@@ -798,13 +792,12 @@ Frame length = 176323
         {{{   694, 1,   313, 0 }}}, // 68
         {{{  1366, 1,   652, 0 }}}, // 70
         {{{   358, 1,   313, 0 }}}, // 72
-        {{{  2038, 1, 32767, 0 }}}, // 74
-        {{{   150, 0,   150, 0 }}},
-        {{{   150, 0,   150, 0 }}},
-    {
-Nb pulse = 38
-Frame length = 174307
-    {
+        {{{  2038, 1,  1000, 0 }}}, // 74
+		// RMT end marker
+		{{{ 0, 1, 0, 0 }}}
+	};
+
+const rmt_item32_t txIitems105[] = {
         {{{   713, 1,   316, 0 }}}, // 0
         {{{   355, 1,   316, 0 }}}, // 2
         {{{   358, 1,   313, 0 }}}, // 4
@@ -843,45 +836,12 @@ Frame length = 174307
         {{{  1363, 1,   649, 0 }}}, // 66
         {{{   358, 1,   656, 0 }}}, // 68
         {{{   688, 1,   320, 0 }}}, // 70
-        {{{   691, 1, 32767, 0 }}}, // 72
-        {{{ 43727, 0, 43727, 0 }}},
-        {{{ 43727, 0, 43727, 0 }}},
-    {
-Nb pulse = 37
-Frame length = 175654
+        {{{   691, 1,  1000, 0 }}}, // 72
+		// RMT end marker
+		{{{ 0, 1, 0, 0 }}}
+	};
 
-Terminating...
-Picocom was killed
-[glecuyer@netbook2 esp32]$ picocom -b 19200 /dev/ttyACM0 
-picocom v3.1
-
-port is        : /dev/ttyACM0
-flowcontrol    : none
-baudrate is    : 19200
-parity is      : none
-databits are   : 8
-stopbits are   : 1
-escape is      : C-a
-local echo is  : no
-noinit is      : no
-noreset is     : no
-hangup is      : no
-nolock is      : no
-send_cmd is    : sz -vv
-receive_cmd is : rz -vv -E
-imap is        : 
-omap is        : 
-emap is        : crcrlf,delbs,
-logfile is     : none
-initstring     : none
-exit_after is  : not set
-exit is        : no
-
-Type [C-a] [C-h] to see available commands
-Terminal ready
-HelloAVR
-
-    {
+const rmt_item32_t txIitems110[] = {
         {{{   713, 1,   316, 0 }}}, // 0
         {{{   355, 1,   316, 0 }}}, // 2
         {{{   355, 1,   316, 0 }}}, // 4
@@ -920,13 +880,12 @@ HelloAVR
         {{{   691, 1,   316, 0 }}}, // 66
         {{{  1366, 1,   652, 0 }}}, // 68
         {{{  1030, 1,   652, 0 }}}, // 70
-        {{{   355, 1, 32767, 0 }}}, // 72
-        {{{   319, 0,   319, 0 }}},
-        {{{   319, 0,   319, 0 }}},
-    {
-Nb pulse = 37
-Frame length = 175315
-    {
+        {{{   355, 1,  1000, 0 }}}, // 72
+		// RMT end marker
+		{{{ 0, 1, 0, 0 }}}
+	};
+
+const rmt_item32_t txIitems111[] = {
         {{{   713, 1,   313, 0 }}}, // 0
         {{{   358, 1,   313, 0 }}}, // 2
         {{{   358, 1,   316, 0 }}}, // 4
@@ -966,51 +925,54 @@ Frame length = 175315
         {{{  1360, 1,   656, 0 }}}, // 68
         {{{   358, 1,   649, 0 }}}, // 70
         {{{   358, 1,   313, 0 }}}, // 72
-        {{{  1030, 1, 32767, 0 }}}, // 74
-        {{{   152, 0,   152, 0 }}},
-        {{{   152, 0,   152, 0 }}},
-    {
-Nb pulse = 38
-Frame length = 175308
+        {{{  1030, 1,  1000, 0 }}}, // 74
+		// RMT end marker
+		{{{ 0, 1, 0, 0 }}}
+	};
 
-*/
 
-rmt_item32_t * txIitems[] = {
-	txIitems01,
-	txIitems02,
-	txIitems03,
-	txIitems04,
-	txIitems05,
-	txIitems06,
-	txIitems11,
-	txIitems12,
-	txIitems13,
-	txIitems14,
-	txIitems15,
-	txIitems16,
-
-}; 
+const rmt_item32_t * txIitems[] = {
+	// Cursor High
+	txIitems000,
+	txIitems001,
+	txIitems002,
+	txIitems003,
+	txIitems004,
+	txIitems005,
+	txIitems010,
+	txIitems011,
+	txIitems012,
+	txIitems013,
+	txIitems014,
+	txIitems015,
+	// Cursor Low
+	txIitems100,
+	txIitems101,
+	txIitems102,
+	txIitems103,
+	txIitems104,
+	txIitems105,
+	txIitems110,
+	txIitems111,
+};
 
 
 /*
  * @brief Build LEGRAND  waveform from raw data.
  */
-
-
-
 void InfraredLegrandTxExecute( short index ){
     int nbItem;
 
 	// Expecting "RMT end marker" shall stop TX
 	nbItem = 40;
-	
-	if  ( index > 11 )
-		index = 11;
-	
+
+	if  ( index > sizeof(txIitems)/sizeof(const rmt_item32_t *) )
+		index = 2; // Default
+
     //To send data according to the waveform items.
     rmt_write_items(RMT_TX_CHANNEL, txIitems[index], nbItem, true);
     //Wait until sending is done.
-    rmt_wait_tx_done(RMT_TX_CHANNEL, portMAX_DELAY);   
-    
+    rmt_wait_tx_done(RMT_TX_CHANNEL, portMAX_DELAY);
+
 }
 

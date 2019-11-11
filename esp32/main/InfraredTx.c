@@ -52,17 +52,17 @@ static void rmt_tx_init(unsigned freq)
 }
 
 static void rmt_tx_frequency(unsigned freq)
-{	
+{
 	static uint16_t rmtTxDriverInitFreq;  // Manage 36 vs 38 Khz
 	if ( rmtTxDriverInitFreq == freq )
 		return;
 	printf( "Setting frequency to %u\n", freq);
-	
+
 	uint32_t duty_div, duty_h, duty_l;
 	duty_div = APB_CLK_FREQ / freq;
 	duty_h = duty_div * RMT_CARRIER_DUTY / 100;
 	duty_l = duty_div - duty_h;
-	rmt_set_tx_carrier(	RMT_TX_CHANNEL, 
+	rmt_set_tx_carrier(	RMT_TX_CHANNEL,
 						RMT_TX_CARRIER_EN,
 						duty_h,	// high_level
 						duty_l,	// low_level
@@ -100,28 +100,41 @@ void InfraredLegrandCodeSend( uint32_t code ){
 	rmt_tx_frequency(36000);
 
 	switch( code ){
-		//case LGD_MESG_KEY_1P_1: index=0; break;
-		//case LGD_MESG_KEY_1P_2: index=1; break;
-		//case LGD_MESG_KEY_1P_3: index=2; break;
-		//case LGD_MESG_KEY_1P_4: index=3; break;
-		
-		// Lampe Salon
-		case 2: index=2; break;
-		case 0x12: index=2+6; break;
+		case 0x000: // Prise 1
+		case 0x001: // Prise 2
+		case 0x002: // Lampe Salon
+		case 0x003: // Volet Chambre
+		case 0x004: // Volet Sejour 1
+		case 0x005: // Volet Sejour 2
+			index = (code - 0x000);
+			break;
 
-		// Volet Chambre 
-		case 3: index=4; break;
-		case 0x13: index=4+6; break;
+		case 0x010: // Prise 1
+		case 0x011: // Prise 2
+		case 0x012: // Lampe Salon
+		case 0x013: // Volet Chambre
+		case 0x014: // Volet Sejour 1
+		case 0x015: // Volet Sejour 2
+			index = (code - 0x010) + 6;
+			break;
 
-		// Volets Salon 
-		case 4: index=4; break;
-		case 0x14: index=4+6; break;
-		case 5: index=5; break;
-		case 0x15: index=5+6; break;
-		case 6: index=6; break;
-		case 0x16: index=6+6; break;
+		case 0x100: // Volet Sejour 3
+		case 0x101: // 3 volets sejour
+		case 0x102: // Garage 1
+		case 0x103: // Porte de service
+		case 0x104: // Portail
+		case 0x105: // Garage 2
+			index = (code - 0x100) + 12;
+			break;
 
-        default: index=0; break;
+		case 0x110: // Volet Sejour 3
+		case 0x111: // 3 volets sejour
+			index = (code - 0x110) + 18;
+			break;
+
+        default:
+			index=1;
+			break;
      }
 
      InfraredLegrandTxExecute( index );
@@ -132,10 +145,10 @@ void InfraredLegrandCodeSend( uint32_t code ){
 
 *****/
 void InfraredSamsungCodeSend( uint32_t code ){
-	
 
-	rmt_tx_frequency(38000);				
-	
+
+	rmt_tx_frequency(38000);
+
     // Convert code to Samsung
      uint16_t samsungcode;
      switch( code ){

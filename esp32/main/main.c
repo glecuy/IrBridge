@@ -390,6 +390,8 @@ void app_main()
         return;
     }
 
+	printf("IrBridge version 1.00 (%s)\n", __DATE__);
+
     /* Configure the IOMUX register for pad BLINK_GPIO
      * to drive one led (simple indicator).
     */

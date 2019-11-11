@@ -27,6 +27,8 @@ uint16_t Transitions[MAX_SAMPLES_NB];
 volatile uint16_t transitionIndex;
 volatile uint8_t done;
 
+uint32_t Signature;
+
 void enableIrInterrupt(void){
 	PCMSK0 |= (1<<PCINT5);
 	PCICR |= (1<<PCIE0);
@@ -171,6 +173,24 @@ int dumpTransitions( int index )
 	return 0;
 }
 
+int signatureTransitions( int index )
+{
+	int i;
+	uint16_t h, l;
+	
+	for ( i=0 ; i< index ; i+=2 ){	
+		h = fixTimeScale(Transitions[i+1] - Transitions[i]);
+		l = fixTimeScale(Transitions[i+2] - Transitions[i+1]);
+		Signature <<= 1;
+		if ( h > l ) {
+			Signature |= 1;
+		}
+	}
+	printf( "Signature = %08lX\n", Signature );
+	return 0;
+}
+
+
 int main(void){ 
 	timer1Setup();
 	timer3Setup();
@@ -198,8 +218,10 @@ int main(void){
 			dumpTransitionsToC(transitionIndex);
 			printf("Nb pulse = %u\n", transitionIndex/2 );			
 			printf("Frame length = %lu\n", fixTimeScale(Transitions[transitionIndex-2]) );
-			//dumpTransitions(transitionIndex);
+			signatureTransitions(transitionIndex);
+			//dumpTransitions(transitionIndex);			
 			transitionIndex = 0;
+			Signature = 0;
 		}
 		//printf("irpin=%u: %u/%u\n", instantTime, irPinHigh, irPinLow );
 		//printf("irpin=%u: %u/%u\n", instantTime, irPinHigh, irPinLow );
