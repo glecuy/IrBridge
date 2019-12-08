@@ -8,6 +8,9 @@ Http controlled infrared transmitter
   
 ## Purpose
   Provides a web interface running on smartphone, tablet (connected to the home wifi network) for infrared controled devices (TV, Smart home, ...)
+  Today it controls:
+   Samsung TV sets
+   Legrand Smart home devices (iOBL)
 
 ## requirements
   Have ESP-IDF installed
@@ -37,4 +40,9 @@ Http controlled infrared transmitter
  Connect the dev board to host via micro USB cable.
     
     make flash
+    make app-flash
+ 
+ ### Run the software
+ USB serial console:
+  picocom -b 115200 /dev/ttyUSB0
   
